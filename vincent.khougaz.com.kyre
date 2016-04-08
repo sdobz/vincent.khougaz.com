@@ -1,0 +1,28 @@
+shared:
+  www-path: &www-path www
+
+avalarky.report:
+
+- ~command.add:
+    name: copy-portfolio
+    run:
+      ~static.copy:
+        source: content/portfolio/
+        dest: *www-path
+- ~command.add:
+    name: upload
+    run:
+      ~s3.upload:
+        <<: *secret_s3
+        bucket: vincent.khougaz.com
+        source: *www-path
+- ~command.add:
+    name: all
+    run:
+      ~command.run:
+        - copy-portfolio
+        - upload
+
+- ~command.run:
+  - copy-portfolio
+  - upload
