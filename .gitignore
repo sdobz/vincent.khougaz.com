@@ -1,3 +1,2 @@
-*.secret.kyre
-www
-.env
+aws.secret
+
