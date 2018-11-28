@@ -8,3 +8,5 @@ if [ ! -f aws.secret]; then
     echo "Missing aws.secret file"
     exit 1
 fi
+
+aws configure set preview.cloudfront true
